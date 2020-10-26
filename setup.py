@@ -5,13 +5,21 @@ try:
 except ImportError:
     from distutils.core import setup, find_packages
 
+with open('requirements.txt') as f:
+    required = f.read().splitlines()
+
+with open("README.md", "r") as f:
+    long_description = f.read()
+
 setup(name='pysigproc',
-      version='0.40',
-      description='Python reader/writer for sigproc filterbank files (works with python3 as well)',
+      version='0.4.0',
+      description='Python reader/writer for sigproc filterbank files.',
       author='Paul Demorest, Devansh Agarwal, Kshitij Aggarwal',
       author_email='pdemores@nrao.edu, da0017@mix.wvu.edu, ka0064@mix.wvu.edu',
       url='http://github.com/devanshkv/pysigproc',
-      install_requires=['numpy', 'h5py', 'scikit-image', 'scipy', 'numba'],
+      install_requires=required,
+      long_description=long_description,
+      long_description_content_type="text/markdown",
       packages=find_packages(),
       py_modules={'pysigproc', 'candidate', 'gpu_utils'},
       scripts=['bin/h5plotter.py'],
